@@ -11,7 +11,7 @@ int fun_1()
 
 int main (int argc, char* argv[])
 {
-	//int k;
+	// exp
 	printf("hello world!\n");
 	//k = fun_1();
 	return 0;
