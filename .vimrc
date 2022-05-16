@@ -8,7 +8,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'sainnhe/gruvbox-material'
-Plugin 'chriskempson/base16-vim'
 Plugin 'tomasr/molokai'
 
 Plugin 'preservim/nerdtree'
@@ -30,20 +29,30 @@ call vundle#end()
 filetype plugin indent on
 
 """ style
-set background=light
-highlight LineNr ctermfg=DarkGrey
-highlight CursorLine cterm=underline
+set background=dark
+"highlight LineNr ctermfg=DarkGrey
+"highlight CursorLine cterm=underline
 " Vim split bar styling
 " https://stackoverflow.com/questions/9001337/vim-split-bar-styling
-highlight VertSplit cterm=NONE
-set fillchars+=vert:\|
+"highlight VertSplit cterm=NONE
+set fillchars+=vert:\|   " for nvim & vim compatible
 
 " Shows syntax highlighting groups for the current cursor position
 " https://githubhot.com/repo/arcticicestudio/nord-vim/issues/259
 augroup nord-theme-overrides
   autocmd!
   " Use Grey as foreground color for Vim comment titles.
-  autocmd ColorScheme nord highlight Comment ctermfg=Grey cterm=italic
+  autocmd ColorScheme nord highlight Comment      ctermfg=Grey cterm=italic
+  autocmd ColorScheme nord highlight Type         ctermfg=Green
+  autocmd ColorScheme nord highlight StorageClass ctermfg=Green
+  autocmd ColorScheme nord highlight Conditional  ctermfg=Cyan
+  autocmd ColorScheme nord highlight Statement    ctermfg=Cyan
+  autocmd ColorScheme nord highlight Repeat       ctermfg=Cyan
+
+  autocmd ColorScheme nord highlight Define       ctermfg=DarkGreen
+  autocmd ColorScheme nord highlight Structure    ctermfg=DarkGreen
+  autocmd ColorScheme nord highlight Include      ctermfg=Brown
+  autocmd ColorScheme nord highlight PreCondit    ctermfg=Yellow cterm=bold
 augroup END
 
 nmap <C-S-K> :call <SID>SynStack()<CR>
@@ -57,7 +66,6 @@ endfunc
 set foldmethod=syntax
 syntax enable
 colorscheme nord
-
 " Basic config for Linux Kernel C Style
 " https://gist.github.com/mxwell/4246602
 syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
